@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+{% block page %}
+<style type="text/css">
+  .success-alert{
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+  }
+</style>
+{% for message in messages %}
+
+        <div class="alert alert-success" id="success-alert">
+            <a class="close" href="#" data-dismiss="alert">×</a>
+                {{ message }}
+        </div>
+{% endfor %}
+<div class="container">
+  <div class="row">
+  <h2 class="jumbotron text-center" style="border-radius: 0px;background-color: black;color: white;">Employee Data Table</h2>
+  <!-- <div class="row text-right"><a href="{% url 'logout' %}"><button class="btn btn-dark">Logout</button></a></div>    -->       
+  <table class="table table-bordered">
+    <thead>
+      <tr style="background-color: orange;">
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Country</th>
+        <th>Date Of Joining</th>
+        <th>Increment Date</th>
+        <th>Salary</th>
+        <th>Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for data in data_emp %}
+      <tr>
+        <td>{{data.Emp_name}}</td>
+        <td>{{data.Emp_phone_number}}</td>
+        <td style="color: black;text-decoration: none;">{{data.Emp_Email}}</td>
+        <td>{{data.Emp_city}}</td>
+        <td>{{data.Emp_state}}</td>
+        <td>{{data.Emp_country}}</td>
+        <td>{{data.Emp_date_of_joining}}</td>
+        <td>{{data.Emp_Increment_Date}}</td>
+        <td>{{data.Emp_Salary}}&nbsp;<b>RS</b></td>
+        <td><a href="{% url 'emp_data_update' data.id %}"><button class="btn btn-success">Edit</button></a></td>
+        {% endfor %}
+      </tr>
+    </tbody>
+    
+  </table>
+</div>
+</div>
+<script type="text/javascript">
+  $("#success-alert").fadeOut(3000);
+</script>
+{% endblock %}
+</body>
+</html>

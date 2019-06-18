@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body style="background: linear-gradient(to left,skyblue,lightgreen)!important">
+
+{% if messages %}
+  <div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+      {% for message in messages %}
+      <div class="alert alert-{{ message.tags }}" role="alert">
+          <p>{{ message }}</p>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+{% endif %}
+
+<div class="container">
+  <h2>Bordered Table</h2>
+  <p>The .table-bordered class adds borders to a table:</p>            
+  <table class="table table-bordered">
+    {% for data in data_emp %}
+    <thead>
+      <tr>
+        <b>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Country</th>
+        <th>Date Of Joining</th>
+        <th>Increment Date</th>
+        <th>Salary</th>
+      </b>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{data.Emp_name}}</td>
+        <td>{{data.Emp_phone_number}}</td>
+        <td>{{data.Emp_Email}}</td>
+        <td>{{data.Emp_city}}</td>
+        <td>{{data.Emp_state}}</td>
+        <td>{{data.Emp_country}}</td>
+        <td>{{data.Emp_date_of_joining}}</td>
+        <td>{{data.Emp_Increment_Date}}</td>
+        <td>{{data.Emp_Salary}}</td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+</div>
+
+</body>
+</html>

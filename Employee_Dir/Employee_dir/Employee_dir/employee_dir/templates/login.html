@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block page %}
+<body style="background: linear-gradient(to left,grey,skyblue)">
+  <h2>Login</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+  </form>
+</body>
+<style type="text/css">
+	h2{
+		background-color: black;
+		color: white;
+		font-weight: bold;
+		height: 100px;
+		text-align: center;
+		padding-top: 30px;
+	}
+	#id_username{
+		height: 30px;
+		width: 350px;
+		padding: 20px;
+	}
+	#id_password{
+	height: 30px;
+		width: 350px;
+		padding: 20px;	
+	}
+	button{
+		height: 40px;
+		width: 150px;
+		margin-left: 80px;
+		background-color: black;
+		color: white;
+	}
+	form{
+		margin-left: 450px;
+		margin-top: 80px;
+	}
+</style>
+
+  {% endblock %}
+

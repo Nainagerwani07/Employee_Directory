@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+{% block page %}
+
+<div class="container-fluid" style="background: linear-gradient(to left,grey,skyblue);margin-top: -30px;">
+	<div class="row">
+	<div class="col-md-12">
+		<h1 class="jumbotron text-center" style="border-radius: 0px;background-color: black;color: white;">Employee Data Form</h1>
+	</div>
+
+	<div class="col-md-12">
+		<div class="col-md-4"></div>
+		<div class="col-md-4" >
+			<form method="post" class="post-form" enctype="multipart/form-data">
+		    {% csrf_token %}
+		    {{ EmployeeDataupdate | crispy  }}
+		    <button type="submit" class="btn btn-success btn-block btnclr">submit</button>
+		 	</form>
+		</div>
+		<div class="col-md-4"></div>
+	</div>
+	
+
+
+<!-- {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %} -->
+
+
+
+<!-- <form method="post" class="post-form" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ EmployeeDataupdate | crispy  }}
+    <button type="submit" class="btn btn-success btn-block btnclr">submit</button>
+ </form> -->
+ </div>
+</div>
+
+<script type="text/javascript">
+	var oneDay = 24*60*60*1000;
+	var x =$("#id_Emp_Increment_Date").val()
+	var y=new Date(x)
+	var z=$("#id_Emp_date_of_joining").val()
+	var asda=new Date(z)
+	var diffDays = Math.round(Math.abs((y.getTime() - asda.getTime())/(oneDay)));
+	if (diffDays < 365){
+		  document.getElementById("id_Emp_Salary").readOnly = true;
+		  // swal("You Cannot Increment Salary");
+		  swal({
+  			title: "Sorry",
+  			text: "You Cannot Increment Salary",
+  			icon: "warning",
+  			button: "Ok",
+			});
+		// document.getElementById("id_Emp_Salary").disabled = true;
+		// window.open('data_table')
+	}
+	console.log(y)
+	console.log(asda)
+	console.log(diffDays)
+</script>
+{% endblock %}

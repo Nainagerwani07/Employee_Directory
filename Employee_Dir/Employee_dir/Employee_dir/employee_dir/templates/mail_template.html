@@ -1,0 +1,9 @@
+<b>Hello,</b>
+<br>
+<br>
+
+{% for x in data_emp %}
+{% if forloop.first %}
+hello <b>{{x.Emp_name}}</b> and now your salary <b> {{x.Emp_Salary}}</b>
+{% endif %}
+{% endfor %}
